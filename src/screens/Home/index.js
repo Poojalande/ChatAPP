@@ -30,21 +30,6 @@ const Home = ({navigation}) => {
     getMarker();
   }, []);
 
-  const Data = [
-    {id: 1, name: 'pooja lande'},
-    {id: 2, name: 'kanak kakad'},
-    {id: 3, name: 'Minakshi Deshmukh'},
-    {id: 4, name: 'pranita ubhad'},
-    {id: 5, name: 'anu bhorpe'},
-    {id: 6, name: 'aishwarya bavne'},
-    {id: 7, name: 'chiku lande'},
-    {id: 8, name: 'pari lande'},
-    {id: 9, name: 'payal lande'},
-    {id: 3, name: 'Minakshi Deshmukh'},
-    {id: 2, name: 'kanak kakad'},
-    {id: 8, name: 'pari lande'},
-  ];
-
   const logoutUser = () => {
     auth()
       .signOut()
@@ -97,7 +82,7 @@ const Home = ({navigation}) => {
           renderItem={({item}) => {
             return (
               <TouchableOpacity
-                onPress={() => navigation.navigate('Chat', {name: item.name})}
+                onPress={() => navigation.navigate('Chat', {name: item.name,data:item})}
                 style={styles.contactView}>
                 <View style={styles.leftView}>
                   <Text

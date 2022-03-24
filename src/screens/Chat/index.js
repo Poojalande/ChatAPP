@@ -28,7 +28,7 @@ const ChatScreen = ({route, navigation}) => {
               source={require('../../assets/images/left-arrow-personal.png')}
             />
           </TouchableOpacity>
-          <Text style={{color: 'black', fontWeight: 'bold'}}>
+          <Text style={{color: 'black', fontWeight: 'bold', fontSize: 16}}>
             {route.params.name}
           </Text>
         </View>
