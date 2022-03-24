@@ -6,14 +6,39 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {Container} from '../../components/container';
+import auth from '@react-native-firebase/auth';
 
 const Login = ({navigation}) => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  const loginUser = () => {
+    try {
+      setLoading(true);
+      auth()
+        .signInWithEmailAndPassword(username, password)
+        .then(user => {
+          console.log('User account created & signed in!', user);
+          navigation.navigate('Home');
+          setLoading(false);
+        })
+        .catch(error => {
+          console.log(error);
+          setLoading(false);
+        });
+    } catch (e) {
+      console.log(e);
+      setLoading(false);
+    }
+  };
+
   return (
     <Container
-      loading={false}
+      loading={loading}
       style={{
         flex: 1,
       }}>
@@ -58,6 +83,8 @@ const Login = ({navigation}) => {
               paddingBottom: 5,
             }}>
             <TextInput
+              value={username}
+              onChangeText={val => setUsername(val)}
               style={{color: 'white', fontSize: 18}}
               placeholder="Email"
               placeholderTextColor={'rgba(255,255,255,0.6)'}
@@ -80,6 +107,8 @@ const Login = ({navigation}) => {
               marginTop: 15,
             }}>
             <TextInput
+              val={password}
+              onChangeText={val => setPassword(val)}
               style={{color: 'white', fontSize: 18}}
               placeholder="Password"
               placeholderTextColor={'rgba(255,255,255,0.6)'}
@@ -87,7 +116,8 @@ const Login = ({navigation}) => {
           </View>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate('Home');
+              // navigation.navigate('Home');
+              loginUser();
             }}
             style={{
               backgroundColor: '#FDEFEF',

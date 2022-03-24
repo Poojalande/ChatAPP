@@ -6,14 +6,57 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {Container} from '../../components/container';
+import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 
 const Register = ({navigation}) => {
+  const [name, setName] = useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  const registerUser = () => {
+    try {
+      setLoading(true);
+
+      auth()
+        .createUserWithEmailAndPassword(username, password)
+        .then(user => {
+          console.log('User account created & signed in!', user);
+
+          const userDocument = firestore().collection('Users').add({
+            email: user.user._user.email,
+            uid: user.user._user.uid,
+            name: name,
+          });
+          setLoading(false);
+
+          console.log('userDocument', userDocument);
+        })
+        .catch(error => {
+          if (error.code === 'auth/email-already-in-use') {
+            console.log('That email address is already in use!');
+          }
+
+          if (error.code === 'auth/invalid-email') {
+            console.log('That email address is invalid!');
+          }
+
+          console.error(error);
+          setLoading(false);
+        });
+    } catch (e) {
+      console.log(e);
+      setLoading(false);
+    }
+  };
+
   return (
     <Container
-      loading={false}
+      loading={loading}
       style={{
         flex: 1,
       }}>
@@ -60,6 +103,8 @@ const Register = ({navigation}) => {
               paddingBottom: 5,
             }}>
             <TextInput
+              value={name}
+              onChangeText={val => setName(val)}
               style={{color: 'white', fontSize: 18}}
               placeholder="Your Name"
               placeholderTextColor={'rgba(255,255,255,0.6)'}
@@ -79,6 +124,8 @@ const Register = ({navigation}) => {
               paddingBottom: 5,
             }}>
             <TextInput
+              value={username}
+              onChangeText={val => setUsername(val)}
               style={{color: 'white', fontSize: 18}}
               placeholder="Email"
               placeholderTextColor={'rgba(255,255,255,0.6)'}
@@ -101,6 +148,8 @@ const Register = ({navigation}) => {
               marginTop: 15,
             }}>
             <TextInput
+              value={password}
+              onChangeText={val => setPassword(val)}
               style={{color: 'white', fontSize: 18}}
               placeholder="Password"
               placeholderTextColor={'rgba(255,255,255,0.6)'}
@@ -109,7 +158,8 @@ const Register = ({navigation}) => {
 
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate('Login');
+              // navigation.navigate('Login');
+              registerUser();
             }}
             style={{
               backgroundColor: '#FDEFEF',
