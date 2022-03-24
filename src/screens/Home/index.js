@@ -6,9 +6,18 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import {Container} from '../../components/container';
 
-const index = ({navigation}) => {
+const Home = ({navigation}) => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
+
   const Data = [
     {id: 1, name: 'pooja lande'},
     {id: 2, name: 'kanak kakad'},
@@ -25,7 +34,7 @@ const index = ({navigation}) => {
   ];
 
   return (
-    <View style={styles.container}>
+    <Container style={styles.container} loading={loading}>
       <View
         style={{
           flexDirection: 'row',
@@ -57,22 +66,27 @@ const index = ({navigation}) => {
         showsVerticalScrollIndicator={false}
         bounces={false}
         data={Data}
+        keyExtractor={(item, index) => index.toString()}
         renderItem={({item}) => {
           return (
             <TouchableOpacity
               onPress={() => navigation.navigate('Chat', {name: item.name})}
               style={styles.contactView}>
               <View style={styles.leftView}>
-                <Text style={styles.leftText}>{item.name.slice(0, 1)}</Text>
+                <Text style={{...styles.leftText, textTransform: 'uppercase'}}>
+                  {item.name.slice(0, 1)}
+                </Text>
               </View>
               <View>
-                <Text style={styles.nameText}>{item.name}</Text>
+                <Text style={{...styles.nameText, textTransform: 'capitalize'}}>
+                  {item.name}
+                </Text>
               </View>
             </TouchableOpacity>
           );
         }}
       />
-    </View>
+    </Container>
   );
 };
 const styles = StyleSheet.create({
@@ -100,6 +114,7 @@ const styles = StyleSheet.create({
     marginVertical: 5,
     borderRadius: 10,
     paddingHorizontal: 5,
+    paddingVertical: 5,
   },
   leftView: {
     width: 40,
@@ -120,4 +135,4 @@ const styles = StyleSheet.create({
     color: 'black',
   },
 });
-export default index;
+export default Home;
