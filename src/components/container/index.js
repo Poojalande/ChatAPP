@@ -16,10 +16,9 @@ export const Container = ({
 }) => {
   const renderContainer = React.useCallback(
     () => (
-      <SafeAreaView
+      <View
         style={{
           flex: 1,
-          padding: 10,
           backgroundColor: 'white',
           ...style,
         }}>
@@ -40,7 +39,7 @@ export const Container = ({
           </View>
         </Modal>
         {children}
-      </SafeAreaView>
+      </View>
     ),
     [children],
   );

@@ -1,10 +1,19 @@
-import {View, Text, TextInput, Image, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  Image,
+  TouchableOpacity,
+  SafeAreaView,
+} from 'react-native';
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
+import {Container} from '../../components/container';
 
-const index = ({navigation}) => {
+const Register = ({navigation}) => {
   return (
-    <View
+    <Container
+      loading={false}
       style={{
         flex: 1,
       }}>
@@ -28,86 +37,96 @@ const index = ({navigation}) => {
             backgroundColor: 'rgba(0,0,0,0.6)',
           }}></View>
       </View>
-      <Text style={{fontSize: 30, color: 'white', marginTop: 10}}>
-        Register
-      </Text>
-      <View
-        style={{
-          marginVertical: 10,
-          marginTop: 150,
-          marginHorizontal: 20,
-        }}>
-        <Text style={{marginLeft: 10, fontSize: 16, color: 'white'}}>
-          Enter Name
-        </Text>
-
-        <View
-          style={{
-            borderBottomWidth: 2,
-            borderBottomColor: '#E7E0C9',
-
-            marginVertical: 10,
-          }}>
-          <TextInput
-            style={{color: 'white', fontSize: 18}}
-            placeholder=" Name"
-            placeholderTextColor={'white'}
-          />
-        </View>
-
-        <Text style={{marginLeft: 10, fontSize: 16, color: 'white'}}>
-          Enter Email
-        </Text>
-
-        <View
-          style={{
-            borderBottomWidth: 2,
-            borderBottomColor: '#E7E0C9',
-
-            marginVertical: 10,
-          }}>
-          <TextInput
-            style={{color: 'white', fontSize: 18}}
-            placeholder=" Email"
-            placeholderTextColor={'white'}
-          />
-        </View>
+      <SafeAreaView>
         <Text
-          style={{marginLeft: 10, fontSize: 16, color: 'white', marginTop: 20}}>
-          Enter Password
+          style={{fontSize: 40, color: 'white', marginTop: 20, marginLeft: 20}}>
+          Register
         </Text>
+
         <View
           style={{
-            borderBottomWidth: 2,
             marginVertical: 10,
-            borderBottomColor: '#E7E0C9',
+            marginTop: 150,
+            marginHorizontal: 20,
           }}>
-          <TextInput
-            style={{color: 'white', fontSize: 18}}
-            placeholder=" Password"
-            placeholderTextColor={'white'}
-          />
-        </View>
+          <Text style={{fontSize: 18, color: 'white'}}>Enter Name</Text>
 
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate('Login');
-          }}
-          style={{
-            backgroundColor: '#FDEFEF',
-            alignItems: 'center',
-            borderRadius: 50,
-            marginVertical: 30,
-            paddingVertical: 10,
-            width: '50%',
-          }}>
-          <Text style={{color: 'black', fontSize: 18, fontWeight: 'bold'}}>
-            Register
+          <View
+            style={{
+              borderBottomWidth: 2,
+              borderBottomColor: '#E7E0C9',
+              marginVertical: 10,
+              marginTop: 15,
+              paddingBottom: 5,
+            }}>
+            <TextInput
+              style={{color: 'white', fontSize: 18}}
+              placeholder="Your Name"
+              placeholderTextColor={'rgba(255,255,255,0.6)'}
+            />
+          </View>
+
+          <Text style={{fontSize: 18, color: 'white', marginTop: 20}}>
+            Enter Email
           </Text>
-        </TouchableOpacity>
-      </View>
-    </View>
+
+          <View
+            style={{
+              borderBottomWidth: 2,
+              borderBottomColor: '#E7E0C9',
+              marginVertical: 10,
+              marginTop: 15,
+              paddingBottom: 5,
+            }}>
+            <TextInput
+              style={{color: 'white', fontSize: 18}}
+              placeholder="Email"
+              placeholderTextColor={'rgba(255,255,255,0.6)'}
+            />
+          </View>
+          <Text
+            style={{
+              fontSize: 18,
+              color: 'white',
+              marginTop: 20,
+            }}>
+            Enter Password
+          </Text>
+          <View
+            style={{
+              borderBottomWidth: 2,
+              marginVertical: 10,
+              borderBottomColor: '#E7E0C9',
+              paddingBottom: 5,
+              marginTop: 15,
+            }}>
+            <TextInput
+              style={{color: 'white', fontSize: 18}}
+              placeholder="Password"
+              placeholderTextColor={'rgba(255,255,255,0.6)'}
+            />
+          </View>
+
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('Login');
+            }}
+            style={{
+              backgroundColor: '#FDEFEF',
+              alignItems: 'center',
+              borderRadius: 50,
+              marginVertical: 30,
+              paddingVertical: 10,
+              width: '50%',
+            }}>
+            <Text style={{color: 'black', fontSize: 18, fontWeight: 'bold'}}>
+              Register
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </SafeAreaView>
+    </Container>
   );
 };
 
-export default index;
+export default Register;

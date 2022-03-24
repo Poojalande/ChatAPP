@@ -1,7 +1,7 @@
 import {View, Text, Image, TextInput, TouchableOpacity} from 'react-native';
 import React from 'react';
 
-const index = ({route, navigation}) => {
+const ChatScreen = ({route, navigation}) => {
   console.log('r........', route);
   return (
     <View style={{flex: 1}}>
@@ -101,4 +101,4 @@ const index = ({route, navigation}) => {
   );
 };
 
-export default index;
+export default ChatScreen;
