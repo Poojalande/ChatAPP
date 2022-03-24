@@ -1,17 +1,14 @@
 import React, {useEffect} from 'react';
 import {Text, View} from 'react-native';
-
+import Home from './src/screens/Home';
 import SplashScreen from 'react-native-splash-screen';
+import MainScreen from './src/navigations/index';
 
 const App = () => {
   useEffect(() => {
     SplashScreen.hide();
   }, []);
-  return (
-    <View>
-      <Text style={{marginTop: 100, color: 'black'}}>Hello Pooja</Text>
-    </View>
-  );
+  return <MainScreen />;
 };
 
 export default App;
