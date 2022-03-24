@@ -47,16 +47,18 @@ const Home = ({navigation}) => {
           <Image
             style={{width: 50, height: 50, borderRadius: 50, marginRight: 10}}
             source={{
-              uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkqqq3hB65nUNOn79Pa676ooImAqXWBb93jA&usqp=CAU',
+              uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdeISxwuZFqn8vs5k6d000EhssO8_edPRKf8W3NUwevXrh-s5FPwLQk2GPZywaYjRhZJ8&usqp=CAU',
             }}
           />
           <Text style={{fontSize: 18, color: 'black', fontWeight: 'bold'}}>
             Pooja lande
           </Text>
         </View>
-        <Text style={{fontSize: 18, color: '#EF6D6D', fontWeight: 'bold'}}>
-          Logout
-        </Text>
+        <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+          <Text style={{fontSize: 18, color: '#EF6D6D', fontWeight: 'bold'}}>
+            Logout
+          </Text>
+        </TouchableOpacity>
       </View>
       <View style={styles.titleView}>
         <Text style={styles.titleColor}>Contact List</Text>
@@ -91,7 +93,7 @@ const Home = ({navigation}) => {
 };
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#E5E3C9',
+    backgroundColor: 'white',
 
     flex: 1,
     // justifyContent: 'center',
@@ -107,7 +109,7 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   contactView: {
-    backgroundColor: '#ACB992',
+    backgroundColor: '#A2D2FF',
     marginHorizontal: 5,
     flexDirection: 'row',
     alignItems: 'center',
@@ -115,10 +117,11 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingHorizontal: 5,
     paddingVertical: 5,
+    paddingLeft: 10,
   },
   leftView: {
-    width: 40,
-    height: 40,
+    width: 30,
+    height: 30,
     borderRadius: 50,
     alignItems: 'center',
     justifyContent: 'center',
@@ -128,10 +131,10 @@ const styles = StyleSheet.create({
   },
   leftText: {
     fontWeight: '900',
-    fontSize: 20,
+    fontSize: 16,
   },
   nameText: {
-    fontSize: 20,
+    fontSize: 16,
     color: 'black',
   },
 });

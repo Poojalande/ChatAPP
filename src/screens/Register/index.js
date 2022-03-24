@@ -28,13 +28,33 @@ const index = ({navigation}) => {
             backgroundColor: 'rgba(0,0,0,0.6)',
           }}></View>
       </View>
-      <Text style={{fontSize: 30, color: 'white', marginTop: 10}}>Login</Text>
+      <Text style={{fontSize: 30, color: 'white', marginTop: 10}}>
+        Register
+      </Text>
       <View
         style={{
           marginVertical: 10,
           marginTop: 150,
           marginHorizontal: 20,
         }}>
+        <Text style={{marginLeft: 10, fontSize: 16, color: 'white'}}>
+          Enter Name
+        </Text>
+
+        <View
+          style={{
+            borderBottomWidth: 2,
+            borderBottomColor: '#E7E0C9',
+
+            marginVertical: 10,
+          }}>
+          <TextInput
+            style={{color: 'white', fontSize: 18}}
+            placeholder=" Name"
+            placeholderTextColor={'white'}
+          />
+        </View>
+
         <Text style={{marginLeft: 10, fontSize: 16, color: 'white'}}>
           Enter Email
         </Text>
@@ -68,9 +88,10 @@ const index = ({navigation}) => {
             placeholderTextColor={'white'}
           />
         </View>
+
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate('Home');
+            navigation.navigate('Login');
           }}
           style={{
             backgroundColor: '#FDEFEF',
@@ -81,18 +102,7 @@ const index = ({navigation}) => {
             width: '50%',
           }}>
           <Text style={{color: 'black', fontSize: 18, fontWeight: 'bold'}}>
-            Login
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate('Register');
-          }}
-          style={{
-            marginVertical: 10,
-          }}>
-          <Text style={{color: '#F4DFD0', fontSize: 18, fontWeight: 'bold'}}>
-            Not a member register here
+            Register
           </Text>
         </TouchableOpacity>
       </View>
