@@ -19,7 +19,7 @@ const Home = ({navigation, route}) => {
   const [userInfo, setUserInfo] = useState(route.params.userInfo);
   const [userName, setUserName] = useState('');
 
-  const getMarker = async () => {
+  const getUserList = async () => {
     const snapshot = await firestore().collection('Users').get();
     const data = snapshot.docs.map(doc => doc.data());
     console.log('data', data);
@@ -31,7 +31,7 @@ const Home = ({navigation, route}) => {
   };
 
   useEffect(() => {
-    getMarker();
+    getUserList();
   }, []);
 
   const logoutUser = () => {

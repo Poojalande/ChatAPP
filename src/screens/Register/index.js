@@ -7,7 +7,6 @@ import {
   SafeAreaView,
 } from 'react-native';
 import React, {useState} from 'react';
-import {NavigationContainer} from '@react-navigation/native';
 import {Container} from '../../components/container';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';

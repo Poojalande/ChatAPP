@@ -7,16 +7,21 @@ import {
   SafeAreaView,
 } from 'react-native';
 import React, {useState} from 'react';
-import {NavigationContainer} from '@react-navigation/native';
+
 import {Container} from '../../components/container';
 import auth from '@react-native-firebase/auth';
 import Toast from 'react-native-simple-toast';
+import {loginDataFun} from '../../redux/action';
+import {useDispatch, useSelector} from 'react-redux';
 
 const Login = ({navigation}) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [userInfo, setUserInfo] = useState({});
+
+  const dispatch = useDispatch();
+  // const infoOfUser = useSelector(state => state.userInfo.loginData);
 
   const loginUser = () => {
     try {
@@ -31,6 +36,7 @@ const Login = ({navigation}) => {
           ]);
 
           setUserInfo(user.user._user);
+          dispatch(loginDataFun(user.user._user));
           navigation.navigate('Home', {userInfo: user.user._user});
           setLoading(false);
         })
