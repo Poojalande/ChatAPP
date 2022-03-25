@@ -26,9 +26,13 @@ const Home = ({navigation, route}) => {
   const getUserList = async () => {
     setLoading(true);
     const snapshot = await firestore().collection('Users').get();
-    const data = snapshot.docs.map(doc => doc.data());
+    let data = snapshot.docs.map(doc => doc.data());
     console.log('data', data);
     if (data?.length > 0) {
+      data = data.sort((a, b) => a.name.localeCompare(b.name));
+
+      console.log(data);
+
       setUsers(data);
     }
 
