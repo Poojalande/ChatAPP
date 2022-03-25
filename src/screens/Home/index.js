@@ -24,6 +24,7 @@ const Home = ({navigation}) => {
     if (data?.length > 0) {
       setUsers(data);
     }
+
     setLoading(false);
   };
 
@@ -38,7 +39,8 @@ const Home = ({navigation}) => {
         Toast.show('Successfully logged out!', Toast.SHORT, [
           'RCTModalHostViewController',
         ]);
-        navigation.navigate('Login')})
+        navigation.navigate('Login');
+      })
       .catch(e => {
         console.log(e);
       });
@@ -87,7 +89,9 @@ const Home = ({navigation}) => {
           renderItem={({item}) => {
             return (
               <TouchableOpacity
-                onPress={() => navigation.navigate('Chat', {name: item.name,data:item})}
+                onPress={() =>
+                  navigation.navigate('Chat', {name: item.name, data: item})
+                }
                 style={styles.contactView}>
                 <View style={styles.leftView}>
                   <Text
