@@ -68,7 +68,7 @@ const ChatScreen = ({route, navigation}) => {
           fromUid: route.params?.loginUserInfo?.uid,
           toUid: route.params?.data?.uid,
           message: message,
-          time: new Date(),
+          time: new Date().toUTCString(),
         })
         .then(() => setMessage(''));
     }
