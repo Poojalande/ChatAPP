@@ -12,12 +12,16 @@ import {Container} from '../../components/container';
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
 import Toast from 'react-native-simple-toast';
+import {useSelector} from 'react-redux';
 
 const Home = ({navigation, route}) => {
   const [loading, setLoading] = useState(true);
   const [users, setUsers] = useState([]);
   const [userInfo, setUserInfo] = useState(route.params.userInfo);
   const [userName, setUserName] = useState('');
+  const infoOfUser = useSelector(state => state.userInfo.loginData);
+
+  console.log('infoOfUser', infoOfUser);
 
   const getUserList = async () => {
     const snapshot = await firestore().collection('Users').get();
@@ -96,7 +100,11 @@ const Home = ({navigation, route}) => {
             return (
               <TouchableOpacity
                 onPress={() =>
-                  navigation.navigate('Chat', {name: item.name, data: item})
+                  navigation.navigate('Chat', {
+                    name: item.name,
+                    data: item,
+                    loginUserInfo: infoOfUser,
+                  })
                 }
                 style={styles.contactView}>
                 <View style={styles.leftView}>
