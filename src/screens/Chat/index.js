@@ -16,6 +16,7 @@ const ChatScreen = ({route, navigation}) => {
   console.log('r........', route);
   const [message, setMessage] = useState('');
   const [messageList, setMessageList] = useState([]);
+  const [isEmpty, setIsEmpty] = useState(true);
 
   const [loading, setLoading] = useState(true);
 
@@ -95,6 +96,22 @@ const ChatScreen = ({route, navigation}) => {
             {route.params.name}
           </Text>
         </View>
+
+        {isEmpty == true && loading == false ? (
+          <View style={{flex: 1}}>
+            <Text
+              style={{
+                fontSize: 18,
+                fontFamily: 'ZillaSlab-Medium',
+                textAlign: 'center',
+                marginTop: 50,
+                paddingHorizontal: 20,
+              }}>
+              No conversion history available, please start sending messages...
+            </Text>
+          </View>
+        ) : null}
+
         <FlatList
           style={{marginBottom: 70}}
           data={messageList}
@@ -104,6 +121,10 @@ const ChatScreen = ({route, navigation}) => {
               route.params?.loginUserInfo?.uid == item.fromUid &&
               item.toUid == route.params?.data?.uid
             ) {
+              if (isEmpty == true) {
+                setIsEmpty(false);
+              }
+
               return (
                 <TouchableOpacity activeOpacity={0.9} style={{}}>
                   <View
@@ -133,7 +154,7 @@ const ChatScreen = ({route, navigation}) => {
                           paddingHorizontal: 8,
                           paddingVertical: 5,
                           fontFamily: 'ZillaSlab-Medium',
-                          fontSize:15
+                          fontSize: 15,
                         }}>
                         {item.message}
                       </Text>
@@ -145,6 +166,10 @@ const ChatScreen = ({route, navigation}) => {
               route.params?.loginUserInfo?.uid == item.toUid &&
               item.fromUid == route.params?.data?.uid
             ) {
+              if (isEmpty == true) {
+                setIsEmpty(false);
+              }
+
               return (
                 <TouchableOpacity activeOpacity={0.9} style={{}}>
                   <View
@@ -172,7 +197,7 @@ const ChatScreen = ({route, navigation}) => {
                           paddingHorizontal: 5,
                           paddingVertical: 5,
                           fontFamily: 'ZillaSlab-Medium',
-                          fontSize:15
+                          fontSize: 15,
                         }}>
                         {item.message}
                       </Text>
@@ -199,8 +224,8 @@ const ChatScreen = ({route, navigation}) => {
                 borderRadius: 30,
                 width: '70%',
                 height: 40,
-                paddingHorizontal: 10,fontFamily: 'ZillaSlab-Medium',
-
+                paddingHorizontal: 10,
+                fontFamily: 'ZillaSlab-Medium',
               }}
               value={message}
               onChangeText={val => setMessage(val)}
