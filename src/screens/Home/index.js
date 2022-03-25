@@ -13,9 +13,11 @@ import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
 import Toast from 'react-native-simple-toast';
 
-const Home = ({navigation}) => {
+const Home = ({navigation, route}) => {
   const [loading, setLoading] = useState(true);
   const [users, setUsers] = useState([]);
+  const [userInfo, setUserInfo] = useState(route.params.userInfo);
+  const [userName, setUserName] = useState('');
 
   const getMarker = async () => {
     const snapshot = await firestore().collection('Users').get();
@@ -59,13 +61,13 @@ const Home = ({navigation}) => {
           }}>
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <Image
-              style={{width: 50, height: 50, borderRadius: 50, marginRight: 10}}
+              style={{width: 50, height: 50, borderRadius: 50, marginRight: 8}}
               source={{
                 uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdeISxwuZFqn8vs5k6d000EhssO8_edPRKf8W3NUwevXrh-s5FPwLQk2GPZywaYjRhZJ8&usqp=CAU',
               }}
             />
             <Text style={{fontSize: 18, color: 'black', fontWeight: 'bold'}}>
-              Pooja lande
+              {userName}
             </Text>
           </View>
           <TouchableOpacity
@@ -87,6 +89,10 @@ const Home = ({navigation}) => {
           data={users}
           keyExtractor={(item, index) => index.toString()}
           renderItem={({item}) => {
+            if (item.uid == userInfo?.uid) {
+              setUserName(item.name);
+            }
+
             return (
               <TouchableOpacity
                 onPress={() =>
@@ -105,6 +111,23 @@ const Home = ({navigation}) => {
                     {item.name}
                   </Text>
                 </View>
+
+                {item.uid == userInfo?.uid ? (
+                  <View
+                    style={{
+                      position: 'absolute',
+                      right: 10,
+                      width: 35,
+                      height: 30,
+                      borderRadius: 25,
+                      borderWidth: 1,
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      backgroundColor: 'white',
+                    }}>
+                    <Text>Me</Text>
+                  </View>
+                ) : null}
               </TouchableOpacity>
             );
           }}

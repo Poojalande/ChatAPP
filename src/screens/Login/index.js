@@ -16,6 +16,7 @@ const Login = ({navigation}) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const [userInfo, setUserInfo] = useState({});
 
   const loginUser = () => {
     try {
@@ -28,7 +29,9 @@ const Login = ({navigation}) => {
           Toast.show('Successfully Signed In', Toast.SHORT, [
             'RCTModalHostViewController',
           ]);
-          navigation.navigate('Home');
+
+          setUserInfo(user.user._user);
+          navigation.navigate('Home', {userInfo: user.user._user});
           setLoading(false);
         })
         .catch(error => {
@@ -40,9 +43,7 @@ const Login = ({navigation}) => {
             Toast.show('User not found!', Toast.SHORT, [
               'RCTModalHostViewController',
             ]);
-
           }
-        
         });
     } catch (e) {
       console.log(e);
