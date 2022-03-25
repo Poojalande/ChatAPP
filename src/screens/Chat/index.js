@@ -11,7 +11,7 @@ import React, {useEffect, useState} from 'react';
 import {Container} from '../../components/container';
 import database from '@react-native-firebase/database';
 import firestore from '@react-native-firebase/firestore';
-
+import moment from 'moment';
 const ChatScreen = ({route, navigation}) => {
   console.log('r........', route);
   const [message, setMessage] = useState('');
@@ -116,7 +116,7 @@ const ChatScreen = ({route, navigation}) => {
         ) : null}
 
         <FlatList
-        inverted
+          inverted
           style={{marginBottom: 70}}
           data={messageList}
           keyExtractor={(item, index) =>
@@ -133,37 +133,47 @@ const ChatScreen = ({route, navigation}) => {
 
               return (
                 <TouchableOpacity activeOpacity={0.9} style={{}}>
-                  <View
-                    style={{
-                      flexDirection: 'row',
-                      justifyContent: 'flex-end',
-                      paddingHorizontal: 10,
-                      marginVertical: 10,
-                    }}>
-                    <Image
-                      style={{width: 30, height: 30, borderRadius: 50}}
-                      source={{
-                        uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBeJIaj90AxSdQ4kugN7RK9TPBhiMcFKiiuXZ6FNw4Sj5mZ8xvPfARHTlsOyerqs8tLS4&usqp=CAU',
-                      }}
-                    />
+                  <View style={{paddingHorizontal: 10, marginVertical: 10}}>
+                    <Text
+                      style={{
+                        alignSelf: 'flex-end',
+                        fontSize: 10,
+                        marginBottom: 5,
+                        fontFamily: 'ZillaSlab-Medium',
+                      }}>
+                      {moment(new Date(item.time)).format('h:mm a')}
+                    </Text>
 
                     <View
                       style={{
-                        backgroundColor: '#FFA6D5',
-                        width: 200,
-                        borderRadius: 5,
-                        justifyContent: 'center',
+                        flexDirection: 'row',
+                        justifyContent: 'flex-end',
                       }}>
-                      <Text
+                      <Image
+                        style={{width: 30, height: 30, borderRadius: 50}}
+                        source={{
+                          uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBeJIaj90AxSdQ4kugN7RK9TPBhiMcFKiiuXZ6FNw4Sj5mZ8xvPfARHTlsOyerqs8tLS4&usqp=CAU',
+                        }}
+                      />
+
+                      <View
                         style={{
-                          color: 'black',
-                          paddingHorizontal: 8,
-                          paddingVertical: 5,
-                          fontFamily: 'ZillaSlab-Medium',
-                          fontSize: 15,
+                          backgroundColor: '#FFA6D5',
+                          width: 200,
+                          borderRadius: 5,
+                          justifyContent: 'center',
                         }}>
-                        {item.message}
-                      </Text>
+                        <Text
+                          style={{
+                            color: 'black',
+                            paddingHorizontal: 8,
+                            paddingVertical: 5,
+                            fontFamily: 'ZillaSlab-Medium',
+                            fontSize: 15,
+                          }}>
+                          {item.message}
+                        </Text>
+                      </View>
                     </View>
                   </View>
                 </TouchableOpacity>
@@ -178,35 +188,46 @@ const ChatScreen = ({route, navigation}) => {
 
               return (
                 <TouchableOpacity activeOpacity={0.9} style={{}}>
-                  <View
-                    style={{
-                      flexDirection: 'row',
-                      paddingHorizontal: 10,
-                      marginVertical: 10,
-                    }}>
-                    <Image
-                      style={{width: 30, height: 30, borderRadius: 50}}
-                      source={{
-                        uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2-lk-RYREmhV89n8yLwXTuOW2wkBMi_RLTg&usqp=CAU',
-                      }}
-                    />
+                  <View style={{paddingHorizontal: 10, marginVertical: 10}}>
+                    <Text
+                      style={{
+                        alignSelf: 'flex-start',
+                        fontSize: 10,
+                        marginBottom: 5,
+                        marginLeft: 35,
+                        fontFamily: 'ZillaSlab-Medium',
+                      }}>
+                      {moment(new Date(item.time)).format('h:mm a')}
+                    </Text>
 
                     <View
                       style={{
-                        backgroundColor: '#88E0EF',
-                        width: 200,
-                        borderRadius: 5,
+                        flexDirection: 'row',
                       }}>
-                      <Text
+                      <Image
+                        style={{width: 30, height: 30, borderRadius: 50}}
+                        source={{
+                          uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2-lk-RYREmhV89n8yLwXTuOW2wkBMi_RLTg&usqp=CAU',
+                        }}
+                      />
+
+                      <View
                         style={{
-                          color: 'black',
-                          paddingHorizontal: 5,
-                          paddingVertical: 5,
-                          fontFamily: 'ZillaSlab-Medium',
-                          fontSize: 15,
+                          backgroundColor: '#88E0EF',
+                          width: 200,
+                          borderRadius: 5,
                         }}>
-                        {item.message}
-                      </Text>
+                        <Text
+                          style={{
+                            color: 'black',
+                            paddingHorizontal: 5,
+                            paddingVertical: 5,
+                            fontFamily: 'ZillaSlab-Medium',
+                            fontSize: 15,
+                          }}>
+                          {item.message}
+                        </Text>
+                      </View>
                     </View>
                   </View>
                 </TouchableOpacity>
