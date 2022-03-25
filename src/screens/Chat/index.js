@@ -16,6 +16,9 @@ const ChatScreen = ({route, navigation}) => {
   console.log('r........', route);
   const [message, setMessage] = useState('');
   const [messageList, setMessageList] = useState([]);
+
+  const [loading,setLoading]=useState(true)
+
   useEffect(() => {
     try {
       database()
@@ -41,6 +44,8 @@ const ChatScreen = ({route, navigation}) => {
               console.log('Called in if.............');
               setMessageList(Object.values(data));
             }
+
+            setLoading(false)
           }
         });
     } catch (e) {
@@ -49,22 +54,22 @@ const ChatScreen = ({route, navigation}) => {
   }, []);
 
   const sendMessage = () => {
-    const newReference = database().ref('/Messages').push();
+    if (message) {
+      const newReference = database().ref('/Messages').push();
 
-    console.log('Auto generated key: ', newReference.key, database, firestore);
-
-    newReference
-      .set({
-        fromUid: route.params?.loginUserInfo?.uid,
-        toUid: route.params?.data?.uid,
-        message: message,
-        time: new Date(),
-      })
-      .then(() => setMessage(''));
+      newReference
+        .set({
+          fromUid: route.params?.loginUserInfo?.uid,
+          toUid: route.params?.data?.uid,
+          message: message,
+          time: new Date(),
+        })
+        .then(() => setMessage(''));
+    }
   };
 
   return (
-    <Container style={{flex: 1}} loading={false}>
+    <Container style={{flex: 1}} loading={loading}>
       <SafeAreaView style={{flex: 1}}>
         <View
           style={{
@@ -84,7 +89,6 @@ const ChatScreen = ({route, navigation}) => {
             {route.params.name}
           </Text>
         </View>
-        {console.log('messageList', messageList)}
         <FlatList
           style={{marginBottom: 70}}
           data={messageList}
@@ -96,6 +100,7 @@ const ChatScreen = ({route, navigation}) => {
             ) {
               return (
                 <TouchableOpacity
+                  activeOpacity={0.9}
                   style={{
                     paddingHorizontal: 10,
                     flexDirection: 'row',
@@ -133,6 +138,7 @@ const ChatScreen = ({route, navigation}) => {
             ) {
               return (
                 <TouchableOpacity
+                  activeOpacity={0.9}
                   style={{
                     paddingHorizontal: 10,
                     flexDirection: 'row',
@@ -188,6 +194,7 @@ const ChatScreen = ({route, navigation}) => {
               placeholder="Enter Text"
             />
             <TouchableOpacity
+              activeOpacity={0.9}
               onPress={() => {
                 sendMessage();
               }}

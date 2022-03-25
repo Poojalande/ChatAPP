@@ -75,6 +75,7 @@ const Home = ({navigation, route}) => {
             </Text>
           </View>
           <TouchableOpacity
+            activeOpacity={0.9}
             onPress={() => {
               logoutUser();
             }}>
@@ -99,6 +100,7 @@ const Home = ({navigation, route}) => {
 
             return (
               <TouchableOpacity
+                activeOpacity={0.9}
                 onPress={() =>
                   navigation.navigate('Chat', {
                     name: item.name,
