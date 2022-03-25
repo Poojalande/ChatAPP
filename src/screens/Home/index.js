@@ -11,6 +11,7 @@ import React, {useEffect, useState} from 'react';
 import {Container} from '../../components/container';
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
+import Toast from 'react-native-simple-toast';
 
 const Home = ({navigation}) => {
   const [loading, setLoading] = useState(true);
@@ -33,7 +34,11 @@ const Home = ({navigation}) => {
   const logoutUser = () => {
     auth()
       .signOut()
-      .then(() => navigation.navigate('Login'))
+      .then(() => {
+        Toast.show('Successfully logged out!', Toast.SHORT, [
+          'RCTModalHostViewController',
+        ]);
+        navigation.navigate('Login')})
       .catch(e => {
         console.log(e);
       });

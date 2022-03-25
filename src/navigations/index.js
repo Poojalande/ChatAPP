@@ -13,6 +13,11 @@ const index = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+      <Stack.Screen
+          name="Login"
+          component={Login}
+          options={{headerShown: false}}
+        />
         <Stack.Screen
           name="Home"
           component={Home}
@@ -21,11 +26,6 @@ const index = () => {
         <Stack.Screen
           name="Chat"
           component={Chat}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="Login"
-          component={Login}
           options={{headerShown: false}}
         />
         <Stack.Screen

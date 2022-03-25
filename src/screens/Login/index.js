@@ -10,6 +10,7 @@ import React, {useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {Container} from '../../components/container';
 import auth from '@react-native-firebase/auth';
+import Toast from 'react-native-simple-toast';
 
 const Login = ({navigation}) => {
   const [username, setUsername] = useState('');
@@ -22,13 +23,26 @@ const Login = ({navigation}) => {
       auth()
         .signInWithEmailAndPassword(username, password)
         .then(user => {
-          console.log('User account created & signed in!', user);
+          console.log('User signed in!', user);
+          // Toast.showWithGravity('Successfully Signed In', Toast.LONG, Toast.BOTTOM);
+          Toast.show('Successfully Signed In', Toast.SHORT, [
+            'RCTModalHostViewController',
+          ]);
           navigation.navigate('Home');
           setLoading(false);
         })
         .catch(error => {
           console.log(error);
           setLoading(false);
+
+          if (error.code === 'auth/user-not-found') {
+            // Toast.showWithGravity('', Toast.LONG, Toast.BOTTOM);
+            Toast.show('User not found!', Toast.SHORT, [
+              'RCTModalHostViewController',
+            ]);
+
+          }
+        
         });
     } catch (e) {
       console.log(e);
