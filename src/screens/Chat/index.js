@@ -120,7 +120,7 @@ const ChatScreen = ({route, navigation}) => {
         <FlatList
           style={{marginBottom: 70}}
           data={messageList}
-          keyExtractor={(item, index) => item?.time?.toString()}
+          keyExtractor={(item, index) => item?.time?.toString()+index.toString()}
           renderItem={({item, index}) => {
             if (
               route.params?.loginUserInfo?.uid == item.fromUid &&

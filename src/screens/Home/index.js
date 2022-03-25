@@ -15,7 +15,7 @@ import Toast from 'react-native-simple-toast';
 import {useSelector} from 'react-redux';
 
 const Home = ({navigation, route}) => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [users, setUsers] = useState([]);
   const [userInfo, setUserInfo] = useState(route.params.userInfo);
   const [userName, setUserName] = useState('');
