@@ -11,7 +11,7 @@ import LottieView from 'lottie-react-native';
 export const Container = ({
   children,
   style,
-  loading = true,
+  loading = false,
   withKeyboard = true,
 }) => {
   const renderContainer = React.useCallback(
