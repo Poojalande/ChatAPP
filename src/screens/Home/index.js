@@ -24,6 +24,7 @@ const Home = ({navigation, route}) => {
   console.log('infoOfUser', infoOfUser);
 
   const getUserList = async () => {
+    setLoading(true);
     const snapshot = await firestore().collection('Users').get();
     const data = snapshot.docs.map(doc => doc.data());
     console.log('data', data);
@@ -100,6 +101,15 @@ const Home = ({navigation, route}) => {
           <Text style={{...styles.titleColor, fontFamily: 'ZillaSlab-Bold'}}>
             Contact List
           </Text>
+          <TouchableOpacity
+            onPress={() => {
+              getUserList();
+            }}>
+            <Image
+              source={require('../../assets/images/refresh.png')}
+              style={{width: 35, height: 35}}
+            />
+          </TouchableOpacity>
         </View>
 
         <FlatList
@@ -179,6 +189,9 @@ const styles = StyleSheet.create({
   },
   titleView: {
     paddingHorizontal: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   titleColor: {
     color: 'black',
