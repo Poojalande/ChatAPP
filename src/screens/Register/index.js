@@ -100,17 +100,30 @@ const Register = ({navigation}) => {
       </View>
       <SafeAreaView>
         <Text
-          style={{fontSize: 40, color: 'white', marginTop: 20, marginLeft: 20}}>
+          style={{
+            fontSize: 40,
+            color: 'white',
+            marginTop: 20,
+            marginLeft: 20,
+            fontFamily: 'Lobster-Regular',
+          }}>
           Register
         </Text>
 
         <View
           style={{
             marginVertical: 10,
-            marginTop: 150,
+            marginTop: 130,
             marginHorizontal: 20,
           }}>
-          <Text style={{fontSize: 18, color: 'white'}}>Enter Name</Text>
+          <Text
+            style={{
+              fontSize: 18,
+              color: 'white',
+              fontFamily: 'ZillaSlab-Medium',
+            }}>
+            Enter Name
+          </Text>
 
           <View
             style={{
@@ -123,13 +136,21 @@ const Register = ({navigation}) => {
             <TextInput
               value={name}
               onChangeText={val => setName(val)}
-              style={{color: 'white', fontSize: 18}}
+              style={{color: 'white', fontSize: 18,
+              fontFamily: 'ZillaSlab-Medium',
+            }}
               placeholder="Your Name"
               placeholderTextColor={'rgba(255,255,255,0.6)'}
             />
           </View>
 
-          <Text style={{fontSize: 18, color: 'white', marginTop: 20}}>
+          <Text
+            style={{
+              fontSize: 18,
+              color: 'white',
+              marginTop: 20,
+              fontFamily: 'ZillaSlab-Medium',
+            }}>
             Enter Email
           </Text>
 
@@ -144,7 +165,9 @@ const Register = ({navigation}) => {
             <TextInput
               value={username}
               onChangeText={val => setUsername(val)}
-              style={{color: 'white', fontSize: 18}}
+              style={{color: 'white', fontSize: 18,
+              fontFamily: 'ZillaSlab-Medium',
+            }}
               placeholder="Email"
               placeholderTextColor={'rgba(255,255,255,0.6)'}
             />
@@ -153,6 +176,7 @@ const Register = ({navigation}) => {
             style={{
               fontSize: 18,
               color: 'white',
+              fontFamily: 'ZillaSlab-Medium',
               marginTop: 20,
             }}>
             Enter Password
@@ -168,7 +192,9 @@ const Register = ({navigation}) => {
             <TextInput
               value={password}
               onChangeText={val => setPassword(val)}
-              style={{color: 'white', fontSize: 18}}
+              style={{color: 'white', fontSize: 18,
+              fontFamily: 'ZillaSlab-Medium',
+            }}
               placeholder="Password"
               placeholderTextColor={'rgba(255,255,255,0.6)'}
             />
@@ -187,7 +213,13 @@ const Register = ({navigation}) => {
               paddingVertical: 10,
               width: '50%',
             }}>
-            <Text style={{color: 'black', fontSize: 18, fontWeight: 'bold'}}>
+            <Text
+              style={{
+                color: 'black',
+                fontSize: 18,
+                fontWeight: 'bold',
+                fontFamily: 'ZillaSlab-Bold',
+              }}>
               Register
             </Text>
           </TouchableOpacity>
@@ -198,7 +230,13 @@ const Register = ({navigation}) => {
             style={{
               marginVertical: 10,
             }}>
-            <Text style={{color: '#F4DFD0', fontSize: 18, fontWeight: 'bold'}}>
+            <Text
+              style={{
+                color: '#F4DFD0',
+                fontSize: 18,
+                fontWeight: 'bold',
+                fontFamily: 'ZillaSlab-Medium',
+              }}>
               Already have an account, login
             </Text>
           </TouchableOpacity>

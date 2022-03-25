@@ -70,7 +70,13 @@ const Home = ({navigation, route}) => {
                 uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdeISxwuZFqn8vs5k6d000EhssO8_edPRKf8W3NUwevXrh-s5FPwLQk2GPZywaYjRhZJ8&usqp=CAU',
               }}
             />
-            <Text style={{fontSize: 18, color: 'black', fontWeight: 'bold'}}>
+            <Text
+              style={{
+                fontSize: 19,
+                color: 'black',
+                fontWeight: 'bold',
+                fontFamily: 'ZillaSlab-Medium',
+              }}>
               {userName}
             </Text>
           </View>
@@ -79,13 +85,21 @@ const Home = ({navigation, route}) => {
             onPress={() => {
               logoutUser();
             }}>
-            <Text style={{fontSize: 18, color: '#EF6D6D', fontWeight: 'bold'}}>
+            <Text
+              style={{
+                fontSize: 18,
+                color: '#EF6D6D',
+                fontWeight: 'bold',
+                fontFamily: 'ZillaSlab-Medium',
+              }}>
               Logout
             </Text>
           </TouchableOpacity>
         </View>
         <View style={styles.titleView}>
-          <Text style={styles.titleColor}>Contact List</Text>
+          <Text style={{...styles.titleColor, fontFamily: 'ZillaSlab-Bold'}}>
+            Contact List
+          </Text>
         </View>
 
         <FlatList
@@ -111,13 +125,21 @@ const Home = ({navigation, route}) => {
                 style={styles.contactView}>
                 <View style={styles.leftView}>
                   <Text
-                    style={{...styles.leftText, textTransform: 'uppercase'}}>
+                    style={{
+                      ...styles.leftText,
+                      textTransform: 'uppercase',
+                      fontFamily: 'ZillaSlab-Medium',
+                    }}>
                     {item.name.slice(0, 1)}
                   </Text>
                 </View>
                 <View>
                   <Text
-                    style={{...styles.nameText, textTransform: 'capitalize'}}>
+                    style={{
+                      ...styles.nameText,
+                      textTransform: 'capitalize',
+                      fontFamily: 'ZillaSlab-Medium',
+                    }}>
                     {item.name}
                   </Text>
                 </View>
@@ -134,6 +156,7 @@ const Home = ({navigation, route}) => {
                       justifyContent: 'center',
                       alignItems: 'center',
                       backgroundColor: 'white',
+                      fontFamily: 'ZillaSlab-Medium',
                     }}>
                     <Text>Me</Text>
                   </View>

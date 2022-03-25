@@ -84,7 +84,13 @@ const Login = ({navigation}) => {
       </View>
       <SafeAreaView>
         <Text
-          style={{fontSize: 40, color: 'white', marginTop: 20, marginLeft: 20}}>
+          style={{
+            fontSize: 40,
+            color: 'white',
+            marginTop: 20,
+            marginLeft: 20,
+            fontFamily: 'Lobster-Regular',
+          }}>
           Login
         </Text>
         <View
@@ -93,7 +99,14 @@ const Login = ({navigation}) => {
             marginTop: 150,
             marginHorizontal: 20,
           }}>
-          <Text style={{fontSize: 18, color: 'white'}}>Enter Email</Text>
+          <Text
+            style={{
+              fontSize: 18,
+              color: 'white',
+              fontFamily: 'ZillaSlab-Medium',
+            }}>
+            Enter Email
+          </Text>
 
           <View
             style={{
@@ -106,9 +119,12 @@ const Login = ({navigation}) => {
             <TextInput
               value={username}
               onChangeText={val => setUsername(val)}
-              style={{color: 'white', fontSize: 18}}
+              style={{color: 'white', fontSize: 18,
+              fontFamily: 'ZillaSlab-Medium',
+            }}
               placeholder="Email"
               placeholderTextColor={'rgba(255,255,255,0.6)'}
+             
             />
           </View>
           <Text
@@ -116,6 +132,7 @@ const Login = ({navigation}) => {
               fontSize: 18,
               color: 'white',
               marginTop: 20,
+              fontFamily: 'ZillaSlab-Medium',
             }}>
             Enter Password
           </Text>
@@ -130,7 +147,9 @@ const Login = ({navigation}) => {
             <TextInput
               val={password}
               onChangeText={val => setPassword(val)}
-              style={{color: 'white', fontSize: 18}}
+              style={{color: 'white', fontSize: 18,
+              fontFamily: 'ZillaSlab-Medium',
+            }}
               placeholder="Password"
               placeholderTextColor={'rgba(255,255,255,0.6)'}
             />
@@ -148,7 +167,13 @@ const Login = ({navigation}) => {
               paddingVertical: 10,
               width: '50%',
             }}>
-            <Text style={{color: 'black', fontSize: 18, fontWeight: 'bold'}}>
+            <Text
+              style={{
+                color: 'black',
+                fontSize: 18,
+                fontWeight: 'bold',
+                fontFamily: 'ZillaSlab-Bold',
+              }}>
               Login
             </Text>
           </TouchableOpacity>
@@ -159,7 +184,13 @@ const Login = ({navigation}) => {
             style={{
               marginVertical: 10,
             }}>
-            <Text style={{color: '#F4DFD0', fontSize: 18, fontWeight: 'bold'}}>
+            <Text
+              style={{
+                color: '#F4DFD0',
+                fontSize: 18,
+                fontWeight: 'bold',
+                fontFamily: 'ZillaSlab-Medium',
+              }}>
               Not a member register here
             </Text>
           </TouchableOpacity>

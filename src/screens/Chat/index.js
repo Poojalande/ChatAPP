@@ -85,7 +85,13 @@ const ChatScreen = ({route, navigation}) => {
               source={require('../../assets/images/left-arrow-personal.png')}
             />
           </TouchableOpacity>
-          <Text style={{color: 'black', fontWeight: 'bold', fontSize: 16}}>
+          <Text
+            style={{
+              color: 'black',
+              fontWeight: 'bold',
+              fontSize: 18,
+              fontFamily: 'ZillaSlab-Bold',
+            }}>
             {route.params.name}
           </Text>
         </View>
@@ -126,6 +132,8 @@ const ChatScreen = ({route, navigation}) => {
                           color: 'black',
                           paddingHorizontal: 8,
                           paddingVertical: 5,
+                          fontFamily: 'ZillaSlab-Medium',
+                          fontSize:15
                         }}>
                         {item.message}
                       </Text>
@@ -163,6 +171,8 @@ const ChatScreen = ({route, navigation}) => {
                           color: 'black',
                           paddingHorizontal: 5,
                           paddingVertical: 5,
+                          fontFamily: 'ZillaSlab-Medium',
+                          fontSize:15
                         }}>
                         {item.message}
                       </Text>
@@ -189,7 +199,8 @@ const ChatScreen = ({route, navigation}) => {
                 borderRadius: 30,
                 width: '70%',
                 height: 40,
-                paddingHorizontal: 10,
+                paddingHorizontal: 10,fontFamily: 'ZillaSlab-Medium',
+
               }}
               value={message}
               onChangeText={val => setMessage(val)}
@@ -209,7 +220,13 @@ const ChatScreen = ({route, navigation}) => {
                 borderRadius: 20,
                 height: 40,
               }}>
-              <Text style={{color: 'white', fontSize: 18, fontWeight: 'bold'}}>
+              <Text
+                style={{
+                  color: 'white',
+                  fontSize: 18,
+                  fontWeight: 'bold',
+                  fontFamily: 'ZillaSlab-Medium',
+                }}>
                 Send
               </Text>
             </TouchableOpacity>
