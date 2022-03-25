@@ -17,7 +17,7 @@ const ChatScreen = ({route, navigation}) => {
   const [message, setMessage] = useState('');
   const [messageList, setMessageList] = useState([]);
 
-  const [loading,setLoading]=useState(true)
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     try {
@@ -45,7 +45,7 @@ const ChatScreen = ({route, navigation}) => {
               setMessageList(Object.values(data));
             }
 
-            setLoading(false)
+            setLoading(false);
           }
         });
     } catch (e) {
@@ -99,36 +99,37 @@ const ChatScreen = ({route, navigation}) => {
               item.toUid == route.params?.data?.uid
             ) {
               return (
-                <TouchableOpacity
-                  activeOpacity={0.9}
-                  style={{
-                    paddingHorizontal: 10,
-                    flexDirection: 'row',
-                    marginVertical: 10,
-                    justifyContent: 'flex-end',
-                  }}>
-                  <Image
-                    style={{width: 30, height: 30, borderRadius: 50}}
-                    source={{
-                      uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBeJIaj90AxSdQ4kugN7RK9TPBhiMcFKiiuXZ6FNw4Sj5mZ8xvPfARHTlsOyerqs8tLS4&usqp=CAU',
-                    }}
-                  />
-
+                <TouchableOpacity activeOpacity={0.9} style={{}}>
                   <View
                     style={{
-                      backgroundColor: '#FFA6D5',
-                      width: 200,
-                      borderRadius: 5,
-                      justifyContent: 'center',
+                      flexDirection: 'row',
+                      justifyContent: 'flex-end',
+                      paddingHorizontal: 10,
+                      marginVertical: 10,
                     }}>
-                    <Text
+                    <Image
+                      style={{width: 30, height: 30, borderRadius: 50}}
+                      source={{
+                        uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBeJIaj90AxSdQ4kugN7RK9TPBhiMcFKiiuXZ6FNw4Sj5mZ8xvPfARHTlsOyerqs8tLS4&usqp=CAU',
+                      }}
+                    />
+
+                    <View
                       style={{
-                        color: 'black',
-                        paddingHorizontal: 8,
-                        paddingVertical: 5,
+                        backgroundColor: '#FFA6D5',
+                        width: 200,
+                        borderRadius: 5,
+                        justifyContent: 'center',
                       }}>
-                      {item.message}
-                    </Text>
+                      <Text
+                        style={{
+                          color: 'black',
+                          paddingHorizontal: 8,
+                          paddingVertical: 5,
+                        }}>
+                        {item.message}
+                      </Text>
+                    </View>
                   </View>
                 </TouchableOpacity>
               );
@@ -137,34 +138,35 @@ const ChatScreen = ({route, navigation}) => {
               item.fromUid == route.params?.data?.uid
             ) {
               return (
-                <TouchableOpacity
-                  activeOpacity={0.9}
-                  style={{
-                    paddingHorizontal: 10,
-                    flexDirection: 'row',
-                    marginVertical: 10,
-                  }}>
-                  <Image
-                    style={{width: 30, height: 30, borderRadius: 50}}
-                    source={{
-                      uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2-lk-RYREmhV89n8yLwXTuOW2wkBMi_RLTg&usqp=CAU',
-                    }}
-                  />
-
+                <TouchableOpacity activeOpacity={0.9} style={{}}>
                   <View
                     style={{
-                      backgroundColor: '#88E0EF',
-                      width: 200,
-                      borderRadius: 5,
+                      flexDirection: 'row',
+                      paddingHorizontal: 10,
+                      marginVertical: 10,
                     }}>
-                    <Text
+                    <Image
+                      style={{width: 30, height: 30, borderRadius: 50}}
+                      source={{
+                        uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2-lk-RYREmhV89n8yLwXTuOW2wkBMi_RLTg&usqp=CAU',
+                      }}
+                    />
+
+                    <View
                       style={{
-                        color: 'black',
-                        paddingHorizontal: 5,
-                        paddingVertical: 5,
+                        backgroundColor: '#88E0EF',
+                        width: 200,
+                        borderRadius: 5,
                       }}>
-                      {item.message}
-                    </Text>
+                      <Text
+                        style={{
+                          color: 'black',
+                          paddingHorizontal: 5,
+                          paddingVertical: 5,
+                        }}>
+                        {item.message}
+                      </Text>
+                    </View>
                   </View>
                 </TouchableOpacity>
               );
