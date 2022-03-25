@@ -116,6 +116,7 @@ const ChatScreen = ({route, navigation}) => {
         ) : null}
 
         <FlatList
+        inverted
           style={{marginBottom: 70}}
           data={messageList}
           keyExtractor={(item, index) =>
