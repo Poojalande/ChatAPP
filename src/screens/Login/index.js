@@ -38,6 +38,8 @@ const Login = ({navigation}) => {
           setUserInfo(user.user._user);
           dispatch(loginDataFun(user.user._user));
           navigation.navigate('Home', {userInfo: user.user._user});
+          setUsername('');
+          setPassword('');
           setLoading(false);
         })
         .catch(error => {
@@ -119,12 +121,13 @@ const Login = ({navigation}) => {
             <TextInput
               value={username}
               onChangeText={val => setUsername(val)}
-              style={{color: 'white', fontSize: 18,
-              fontFamily: 'ZillaSlab-Medium',
-            }}
+              style={{
+                color: 'white',
+                fontSize: 18,
+                fontFamily: 'ZillaSlab-Medium',
+              }}
               placeholder="Email"
               placeholderTextColor={'rgba(255,255,255,0.6)'}
-             
             />
           </View>
           <Text
@@ -145,11 +148,13 @@ const Login = ({navigation}) => {
               marginTop: 15,
             }}>
             <TextInput
-              val={password}
+              value={password}
               onChangeText={val => setPassword(val)}
-              style={{color: 'white', fontSize: 18,
-              fontFamily: 'ZillaSlab-Medium',
-            }}
+              style={{
+                color: 'white',
+                fontSize: 18,
+                fontFamily: 'ZillaSlab-Medium',
+              }}
               placeholder="Password"
               placeholderTextColor={'rgba(255,255,255,0.6)'}
             />

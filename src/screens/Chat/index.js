@@ -50,12 +50,10 @@ const ChatScreen = ({route, navigation}) => {
           }
 
           setLoading(false);
-
         });
     } catch (e) {
       console.log(e);
       setLoading(false);
-
     }
   }, []);
 
@@ -120,7 +118,9 @@ const ChatScreen = ({route, navigation}) => {
         <FlatList
           style={{marginBottom: 70}}
           data={messageList}
-          keyExtractor={(item, index) => item?.time?.toString()+index.toString()}
+          keyExtractor={(item, index) =>
+            item?.time?.toString() + index.toString()
+          }
           renderItem={({item, index}) => {
             if (
               route.params?.loginUserInfo?.uid == item.fromUid &&
@@ -224,6 +224,7 @@ const ChatScreen = ({route, navigation}) => {
               flexDirection: 'row',
             }}>
             <TextInput
+              onSubmitEditing={() => sendMessage()}
               style={{
                 borderWidth: 1,
                 borderRadius: 30,
